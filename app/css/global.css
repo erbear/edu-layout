@@ -48,3 +48,19 @@ type5 - nie wiem
 .type5:hover{
     border: 1px solid #269bbe;
 }
+.type6{
+    background-color: #FFF0F5;
+    color: #969696;
+    border: 1px solid #FFF0F5;
+}
+.type6:hover{
+    border: 1px solid #969696;
+}
+.type7{
+    background-color: #DC143C;
+    color: #fff;
+    border: 1px solid #DC143C;
+}
+.type7:hover{
+    border: 1px solid #b80025;
+}

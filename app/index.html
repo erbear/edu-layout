@@ -9,12 +9,12 @@
     <title>Starter Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-<!--
-    <link href="lib/bootstrap/bootstrap.css" rel="stylesheet">
 
-     Add custom CSS here 
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
--->
+    <link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+
+<!--      Add custom CSS here 
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"> -->
+
     <link href="css/calendar.css" rel="stylesheet">
     <link href="css/layout.css" rel="stylesheet">
     <link href="css/global.css" rel="stylesheet">
@@ -24,7 +24,7 @@
       <div id="ed-sidebar">
           <ul>
               <li>Plan</li>
-              <li ng-repeat="dana in dane" own-terminy="dana" change-terminy="changeTerminy" drag-element class="{{services.type(dana.typ)}}">{{dana.nazwa}}</li>
+              <li ng-repeat="dana in dane" own-terminy="dana" change-terminy="changeTerminy" drag-element ng-class="[services.type(dana.typ), services.isDone(dana.terminy) ? 'type6' : '']">{{dana.nazwa}}</li>
           </ul>    
       </div>
       <div id="ed-center">
@@ -53,7 +53,7 @@
           <div class="header">
               Poniedziałek
           </div>
-          <div ng-repeat="termin in przedmiot.terminy | filter:services.pn" own-termin="termin" add-to-plan="addLecture" drop-element style="top:{{services.top(termin.start)}}%;height:{{services.height(termin.start, termin.koniec)}}%;" class="lecture {{services.type(przedmiot.typ)}}">
+          <div ng-repeat="termin in przedmiot.terminy | filter:services.pn" own-termin="termin" add-to-plan="addLecture" drop-element style="top:{{services.top(termin.start)}}%;height:{{services.height(termin.start, termin.koniec)}}%;min-height:{{services.height(termin.start, termin.koniec)}}%;" class="lecture ng-class:services.isChosen(termin.active, przedmiot.typ)">
               {{termin.prowadzacy}}
               <p>{{termin.start}} - {{termin.koniec}}</p>
               <span>Miejsce</span>
@@ -63,7 +63,7 @@
           <div class="header">
               Wtorek
           </div>
-          <div ng-repeat="termin in przedmiot.terminy | filter:services.wt" own-termin="termin" drop-element style="top:{{services.top(termin.start)}}%;height:{{services.height(termin.start, termin.koniec)}}%;" class="lecture {{services.type(przedmiot.typ)}}">
+          <div ng-repeat="termin in przedmiot.terminy | filter:services.wt" own-termin="termin" add-to-plan="addLecture" drop-element style="top:{{services.top(termin.start)}}%;height:{{services.height(termin.start, termin.koniec)}}%;min-height:{{services.height(termin.start, termin.koniec)}}%;" class="lecture ng-class:services.isChosen(termin.active, przedmiot.typ)">
               {{termin.prowadzacy}}
               <p>{{termin.start}} - {{termin.koniec}}</p>
               <span>Miejsce</span>
@@ -73,7 +73,7 @@
           <div class="header">
               Środa
           </div>
-          <div ng-repeat="termin in przedmiot.terminy | filter:services.sr" own-termin="termin" drop-element style="top:{{services.top(termin.start)}}%;height:{{services.height(termin.start, termin.koniec)}}%;" class="lecture {{services.type(przedmiot.typ)}}">
+          <div ng-repeat="termin in przedmiot.terminy | filter:services.sr" own-termin="termin" add-to-plan="addLecture" drop-element style="top:{{services.top(termin.start)}}%;height:{{services.height(termin.start, termin.koniec)}}%;min-height:{{services.height(termin.start, termin.koniec)}}%;" class="lecture ng-class:services.isChosen(termin.active, przedmiot.typ)">
               {{termin.prowadzacy}}
               <p>{{termin.start}} - {{termin.koniec}}</p>
               <span>Miejsce</span>
@@ -83,7 +83,7 @@
           <div class="header">
               Czwartek
           </div>
-          <div ng-repeat="termin in przedmiot.terminy | filter:services.czw" own-termin="termin" drop-element style="top:{{services.top(termin.start)}}%;height:{{services.height(termin.start, termin.koniec)}}%;" class="lecture {{services.type(przedmiot.typ)}}">
+          <div ng-repeat="termin in przedmiot.terminy | filter:services.czw" own-termin="termin" add-to-plan="addLecture" drop-element style="top:{{services.top(termin.start)}}%;height:{{services.height(termin.start, termin.koniec)}}%;min-height:{{services.height(termin.start, termin.koniec)}}%;" class="lecture ng-class:services.isChosen(termin.active, przedmiot.typ)">
               {{termin.prowadzacy}}
               <p>{{termin.start}} - {{termin.koniec}}</p>
               <span>Miejsce</span>
@@ -93,7 +93,7 @@
           <div class="header">
               Piątek
           </div>
-          <div ng-repeat="termin in przedmiot.terminy | filter:services.pt" own-termin="termin" drop-element style="top:{{services.top(termin.start)}}%;height:{{services.height(termin.start, termin.koniec)}}%;" class="lecture {{services.type(przedmiot.typ)}}">
+          <div ng-repeat="termin in przedmiot.terminy | filter:services.pt" own-termin="termin" add-to-plan="addLecture" drop-element style="top:{{services.top(termin.start)}}%;height:{{services.height(termin.start, termin.koniec)}}%;min-height:{{services.height(termin.start, termin.koniec)}}%;" class="lecture ng-class:services.isChosen(termin.active, przedmiot.typ)">
               {{termin.prowadzacy}}
               <p>{{termin.start}} - {{termin.koniec}}</p>
               <span>Miejsce</span>
@@ -103,9 +103,8 @@
   </div>
         </div>
       </div>
-    <script src="lib/bootstrap/bootstrap.js" type="text/javascript"></script>
     <script src="lib/jquery/jquery.js" type="text/javascript"></script>
-    <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.js" type="text/javascript"></script>
     <script src="lib/jquery.ui/ui/jquery.ui.core.js"></script>
     <script src="lib/jquery.ui/ui/jquery.ui.widget.js"></script>
     <script src="lib/jquery.ui/ui/jquery.ui.mouse.js"></script>

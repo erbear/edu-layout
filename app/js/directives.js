@@ -8,19 +8,19 @@ angular.module('ZapisyDirectives', []).
     return {
     	restrict: 'EA',
       scope: {
-        ownTerminy: '=',
-        change: '=changeTerminy'
+        ownTerminy: '=',//terminy danego przedmiotu
+        change: '=changeTerminy'//funkcja zmieniajaca zmienna przedmioty w widoku
       },
     	link: function(scope, ele, attrs){
     		$(function() {
     			ele.draggable({
     				revert: "invalid",
     				start: function(event, ui){
-  						scope.change(scope.ownTerminy);
+  						scope.change(scope.ownTerminy);//pokazuja sie przedmioty
               scope.$apply();
   					}
     			}).click(function(){
-            scope.change(scope.ownTerminy);
+            scope.change(scope.ownTerminy);//pokazuja sie przedmioty
             scope.$apply();
           });
     		});
@@ -30,20 +30,22 @@ angular.module('ZapisyDirectives', []).
   directive('dropElement', [function() {
   	return {
       scope: {
-        ownTermin: '=',
-        addToPlan: '='
+        ownTermin: '=',//termin danego kafelka
+        addToPlan: '='//funkcja dodajaca termin do planu
       },
   		link: function(scope, ele, attrs){
   			$(function() {
   				ele.droppable({
   					accept: "#ed-sidebar ul li",
   					drop: function(event, ui){
-  						scope.addToPlan(scope.ownTermin);
+  						scope.addToPlan(scope.ownTermin);//dodaje do plany
+              scope.ownTermin.active = true;//ustawia termin jako aktywny
               scope.$apply();
-              var el = angular.element(ui.draggable).get(0)
+              var el = angular.element(ui.draggable).get(0);
+              //powrot elementu na swoje miejsce
               el.style.top = 'auto';
               el.style.left = 'auto';
-              $(el).draggable('disable').off('click');
+              $(el).draggable('disable');//wylaczenie draggable
   					}
   				});
   			});

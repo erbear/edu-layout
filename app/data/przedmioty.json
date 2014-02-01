@@ -5,6 +5,7 @@
         "typ": "L",
         "terminy": [
             {
+                "nazwa": "Logika układów cyfrowych",
                 "prowadzacy": "pan1",
                 "dzien": "Pn",
                 "tydzien": "P",
@@ -13,6 +14,7 @@
                 "sala": "315, C-13"
             },
             {
+                "nazwa": "Logika układów cyfrowych",
                 "prowadzacy": "pan2",
                 "dzien": "Wt",
                 "tydzien": "P",
@@ -21,6 +23,7 @@
                 "sala": "315, C-13"
             },
             {
+                "nazwa": "Logika układów cyfrowych",
                 "prowadzacy": "pan3",
                 "dzien": "Czw",
                 "tydzien": "P",
@@ -29,6 +32,7 @@
                 "sala": "313, C-13"
             },
             {
+                "nazwa": "Logika układów cyfrowych",
                 "prowadzacy": "pan5",
                 "dzien": "Pt",
                 "tydzien": "N",
@@ -44,6 +48,7 @@
         "typ": "L",
         "terminy": [
             {
+                "nazwa": "Języki programowania",
                 "prowadzacy": "pan1",
                 "dzien": "Pn",
                 "tydzien": "P",
@@ -52,6 +57,7 @@
                 "sala": "315, C-13"
             },
             {
+                "nazwa": "Języki programowania",
                 "prowadzacy": "pan2",
                 "dzien": "Wt",
                 "tydzien": "P",
@@ -60,6 +66,7 @@
                 "sala": "315, C-13"
             },
             {
+                "nazwa": "Języki programowania",
                 "prowadzacy": "pan3",
                 "dzien": "Czw",
                 "tydzien": "P",
@@ -68,6 +75,7 @@
                 "sala": "313, C-13"
             },
             {
+                "nazwa": "Języki programowania",
                 "prowadzacy": "pan5",
                 "dzien": "Pt",
                 "tydzien": "N",
@@ -83,6 +91,7 @@
         "typ": "W",
         "terminy": [
             {
+                "nazwa": "Niez. i diagn. ukł.cyfr. 1",
                 "prowadzacy": "pan1",
                 "dzien": "Pn",
                 "tydzien": "P",
@@ -91,6 +100,7 @@
                 "sala": "315, C-13"
             },
             {
+                "nazwa": "Niez. i diagn. ukł.cyfr. 1",
                 "prowadzacy": "pan2",
                 "dzien": "Wt",
                 "tydzien": "P",
@@ -99,6 +109,7 @@
                 "sala": "315, C-13"
             },
             {
+                "nazwa": "Niez. i diagn. ukł.cyfr. 1",
                 "prowadzacy": "pan3",
                 "dzien": "Czw",
                 "tydzien": "P",
@@ -107,6 +118,7 @@
                 "sala": "313, C-13"
             },
             {
+                "nazwa": "Niez. i diagn. ukł.cyfr. 1",
                 "prowadzacy": "pan5",
                 "dzien": "Pt",
                 "tydzien": "N",

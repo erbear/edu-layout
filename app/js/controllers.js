@@ -13,7 +13,9 @@ angular.module('ZapisyControllers', [])
   	$scope.changeTerminy = function(data){
   		$scope.przedmiot = data;
   	}
+
   	$scope.addLecture = function(lecture){
   		$scope.plan.push(lecture);
+  		console.log(CalendarService.findInPlan($scope.plan, "Języki programowania"));
   	}
   }]);

@@ -51,4 +51,27 @@ angular.module('ZapisyServices', []).
             }
         }
     }
+    this.isChosen = function(active, rodzaj){
+    	if (active == true){
+    		return this.type(rodzaj);
+    	}else return 'type6';
+    }
+    this.isDone = function(terminy){
+    	var isCompleted = false;
+    	terminy.forEach(function(termin){
+    		if (termin.active == true){
+    			isCompleted = true;
+    		}
+    	});
+    	return isCompleted;
+    }
+    this.findInPlan = function(plan, nazwa){
+    	var id = -1;
+    	for (var i = 0; i<plan.length; i++){
+    		if (plan[i].nazwa === nazwa){
+    			id = i;
+    		}
+    	}
+    	return id;
+    }
   }]);
