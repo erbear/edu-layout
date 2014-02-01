@@ -1,0 +1,105 @@
+#ed-calendar{
+    width: 1000px;
+    height: 400px;
+    font-family: calibri;
+}
+
+/*
+#ed-calendar{
+    width: inherit;
+    height: inherit;
+}
+*/
+
+#ed-calendar *,*:after, *:before{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+#ed-calendar .options {
+    margin: 0 0 2% 0;
+    width: 100%;
+}
+#ed-calendar .hours {
+    float: left;
+    width: 5%;
+    position: relative;
+    height: 100%;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+#ed-calendar .hours p {
+    position: absolute;
+    width: 2000%;
+    border-top: 1px solid #ddd;
+    margin: 0 0 10px
+}
+#ed-calendar .day {
+    width: 19%;
+    height: 100%;
+    float: left;
+    border: 1px solid #aaa;
+    border-right: 0px;
+    position: relative;
+}
+#ed-calendar .day:last-child {
+    border: 1px solid #aaa;
+}
+
+#ed-calendar .header {
+    font-weight: bold;
+    padding: 6% 0;
+    height: 10%;
+    text-align:center;
+    border-bottom: 1px solid #aaa;
+}
+
+#ed-calendar .day .lecture {
+    font-size: 14px;
+    position: absolute;
+    width: 100%;
+    padding: 2%;
+}
+#ed-calendar .lecture p, #ed-calendar .lecture span  {
+    display: none;
+    font-size: 12px;
+    padding: 2%;
+    margin: 0;
+}
+#ed-calendar .lecture:hover p, #ed-calendar .lecture:hover span  {
+    display: block;
+}
+#ed-calendar .day .lecture:hover {
+    height:auto!important;
+    z-index: 1;
+}
+/*
+odleglosci od gornej krawedzi
+*/
+#ed-calendar .lecture1{
+    top: 10%;
+    height: 15%;
+}
+#ed-calendar .lecture2{
+    top: 21.66666666666655%;
+}
+#ed-calendar .lecture3{
+    top: 34.99999999999975%;
+}
+#ed-calendar .lecture4{
+    top: 48.333333333333333295%;
+}
+#ed-calendar .lecture5{
+    top: 61.666666666666653295%;
+}
+#ed-calendar .lecture6{
+    top: 73.888888888888753295%;
+}
+#ed-calendar .lecture7{
+    top: 86.111111111110853295%;
+}
+#ed-calendar .selected{
+    background-color:#ce0e0e!important;
+    border: 1px solid #9d0202!important;
+}

@@ -1,0 +1,50 @@
+/*
+wszyskie typy zajec
+type1 - wyklad
+type2 - laborki
+type3 - cwiczenia
+type4 - seminarium
+type5 - nie wiem
+*/
+.type1{
+    background-color: #428bca;
+    color: #fff;
+    border: 1px solid #428bca;
+}
+.type1:hover{
+    border: 1px solid #214e74;
+}
+.type2{
+    background-color: #f0ad4e;
+    color: #fff;
+    border: 1px solid #f0ad4e;
+}
+.type2:hover{
+    border: 1px solid #e78f14;
+}
+.type3{
+    background-color: #5cb85c;
+    color: #fff;
+    border: 1px solid #5cb85c;
+    
+}
+.type3:hover{
+    border: 1px solid #357935;
+}
+.type4{
+    background-color: #d9534f;
+    color: #fff;
+    border: 1px solid #d9534f;
+    
+}
+.type4:hover{
+    border: 1px solid #bc2d28;
+}
+.type5{
+    background-color: #5bc0de;
+    color: #fff;
+    border: 1px solid #5bc0de;
+}
+.type5:hover{
+    border: 1px solid #269bbe;
+}

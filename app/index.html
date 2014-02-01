@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html ng-app="ZapisyApp"lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Starter Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+<!--
+    <link href="lib/bootstrap/bootstrap.css" rel="stylesheet">
+
+     Add custom CSS here 
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+-->
+    <link href="css/calendar.css" rel="stylesheet">
+    <link href="css/layout.css" rel="stylesheet">
+    <link href="css/global.css" rel="stylesheet">
+  </head>
+
+  <body ng-controller="MainController">
+      <div id="ed-sidebar">
+          <ul>
+              <li>Plan</li>
+              <li ng-repeat="dana in dane" own-terminy="dana" change-terminy="changeTerminy" drag-element class="{{services.type(dana.typ)}}">{{dana.nazwa}}</li>
+          </ul>    
+      </div>
+      <div id="ed-center">
+        <div id="ed-navbar">
+          <ul>
+              <li>pierwszy</li>
+              <li>drugi</li>
+              <li>trzeci</li>
+              <li>czwarty</li>
+          </ul>
+        </div>
+        <div id="ed-content">
+        {{plan}}
+     <div id="ed-calendar">
+     
+      <div class="hours">
+          <p class="lecture1">7:30</p>
+          <p class="lecture2">9:15</p>
+          <p class="lecture3">11:15</p>
+          <p class="lecture4">13:15</p>
+          <p class="lecture5">15:15</p>
+          <p class="lecture6">17:05</p>
+          <p class="lecture7">18:55</p>
+      </div>
+      <div class="day">
+          <div class="header">
+              Poniedziałek
+          </div>
+          <div ng-repeat="termin in przedmiot.terminy | filter:services.pn" own-termin="termin" add-to-plan="addLecture" drop-element style="top:{{services.top(termin.start)}}%;height:{{services.height(termin.start, termin.koniec)}}%;" class="lecture {{services.type(przedmiot.typ)}}">
+              {{termin.prowadzacy}}
+              <p>{{termin.start}} - {{termin.koniec}}</p>
+              <span>Miejsce</span>
+          </div>
+      </div>
+      <div class="day">
+          <div class="header">
+              Wtorek
+          </div>
+          <div ng-repeat="termin in przedmiot.terminy | filter:services.wt" own-termin="termin" drop-element style="top:{{services.top(termin.start)}}%;height:{{services.height(termin.start, termin.koniec)}}%;" class="lecture {{services.type(przedmiot.typ)}}">
+              {{termin.prowadzacy}}
+              <p>{{termin.start}} - {{termin.koniec}}</p>
+              <span>Miejsce</span>
+          </div>
+      </div>
+      <div class="day">
+          <div class="header">
+              Środa
+          </div>
+          <div ng-repeat="termin in przedmiot.terminy | filter:services.sr" own-termin="termin" drop-element style="top:{{services.top(termin.start)}}%;height:{{services.height(termin.start, termin.koniec)}}%;" class="lecture {{services.type(przedmiot.typ)}}">
+              {{termin.prowadzacy}}
+              <p>{{termin.start}} - {{termin.koniec}}</p>
+              <span>Miejsce</span>
+          </div>
+      </div>
+      <div class="day">
+          <div class="header">
+              Czwartek
+          </div>
+          <div ng-repeat="termin in przedmiot.terminy | filter:services.czw" own-termin="termin" drop-element style="top:{{services.top(termin.start)}}%;height:{{services.height(termin.start, termin.koniec)}}%;" class="lecture {{services.type(przedmiot.typ)}}">
+              {{termin.prowadzacy}}
+              <p>{{termin.start}} - {{termin.koniec}}</p>
+              <span>Miejsce</span>
+          </div>
+      </div>
+      <div class="day">
+          <div class="header">
+              Piątek
+          </div>
+          <div ng-repeat="termin in przedmiot.terminy | filter:services.pt" own-termin="termin" drop-element style="top:{{services.top(termin.start)}}%;height:{{services.height(termin.start, termin.koniec)}}%;" class="lecture {{services.type(przedmiot.typ)}}">
+              {{termin.prowadzacy}}
+              <p>{{termin.start}} - {{termin.koniec}}</p>
+              <span>Miejsce</span>
+          </div>
+      </div>
+      
+  </div>
+        </div>
+      </div>
+    <script src="lib/bootstrap/bootstrap.js" type="text/javascript"></script>
+    <script src="lib/jquery/jquery.js" type="text/javascript"></script>
+    <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="lib/jquery.ui/ui/jquery.ui.core.js"></script>
+    <script src="lib/jquery.ui/ui/jquery.ui.widget.js"></script>
+    <script src="lib/jquery.ui/ui/jquery.ui.mouse.js"></script>
+    <script src="lib/jquery.ui/ui/jquery.ui.draggable.js" type="text/javascript"></script>
+    <script src="lib/jquery.ui/ui/jquery.ui.droppable.js" type="text/javascript"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/angular-route.js"></script>
+    <script src="lib/angular/angular-resource.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/directives.js"></script>
+  </body>
+  </html>
