@@ -9,9 +9,18 @@ angular.module('ZapisyDirectives', []).
     	restrict: 'EA',
       scope: {
         ownTerminy: '=',//terminy danego przedmiotu
-        change: '=changeTerminy'//funkcja zmieniajaca zmienna przedmioty w widoku
+        change: '=changeTerminy',//funkcja zmieniajaca zmienna przedmioty w widoku
+        trigger: '=triggerDroppable'
       },
     	link: function(scope, ele, attrs){
+        //obserwator czy w terminach aktywuje sie jakis termin
+        scope.$watch('trigger', function(val){
+          if (val){
+            ele.draggable('disable');
+          }else{
+            ele.draggable('enable');
+          }
+        });
     		$(function() {
     			ele.draggable({
     				revert: "invalid",

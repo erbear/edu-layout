@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Starter Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+<!--
+    <link href="lib/bootstrap/bootstrap.css" rel="stylesheet">
+
+     Add custom CSS here 
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+-->
+    <link href="css/calendar.css" rel="stylesheet">
+    <link href="css/layout.css" rel="stylesheet">
+    <link href="css/global.css" rel="stylesheet">
+  </head>
+
+  <body>
+      
+      <div id="ed-sidebar">
+          <ul>
+              <li>Plan</li>
+              <li class="type1">Logika układow czfrowych</li>
+              <li class="type2">Architektura komputerow</li>
+              <li class="type1">Architektura komputerow</li>
+              <li class="type3">Fizyka 3.1</li>
+          </ul>    
+      </div>
+      <div id="ed-center">
+        <div id="ed-navbar">
+          <ul>
+              <li>pierwszy</li>
+              <li>drugi</li>
+              <li>trzeci</li>
+              <li>czwarty</li>
+          </ul>
+        </div>
+        <div id="ed-content">
+            <div id="ed-calendar">
+     
+      <div class="hours">
+          <p class="lecture1">7:30</p>
+          <p class="lecture2">9:15</p>
+          <p class="lecture3">11:15</p>
+          <p class="lecture4">13:15</p>
+          <p class="lecture5">15:15</p>
+          <p class="lecture6">17:05</p>
+          <p class="lecture7">18:55</p>
+      </div>
+      <div class="day">
+          <div class="header">
+              Poniedziałek
+          </div>
+          <div style="top:21%;height:12%;" class="lecture type1">
+              {{termin.prowadzacy}}
+              <p>{{termin.start}} - {{termin.koniec}}</p>
+              <span>Miejsce</span>
+          </div>
+      </div>
+      <div class="day">
+          <div class="header">
+              Wtorek
+          </div>
+          <div style="top:21%;height:12%;" class="lecture type1">
+              {{termin.prowadzacy}}
+              <p>{{termin.start}} - {{termin.koniec}}</p>
+              <span>Miejsce</span>
+          </div>
+      </div>
+      <div class="day">
+          <div class="header">
+              Środa
+          </div>
+          <div style="top:21%;height:12%;" class="lecture type1">
+              {{termin.prowadzacy}}
+              <p>{{termin.start}} - {{termin.koniec}}</p>
+              <span>Miejsce</span>
+          </div>
+      </div>
+      <div class="day">
+          <div class="header">
+              Czwartek
+          </div>
+          <div style="top:21%;height:12%;" class="lecture type1">
+              {{termin.prowadzacy}}
+              <p>{{termin.start}} - {{termin.koniec}}</p>
+              <span>Miejsce</span>
+          </div>
+      </div>
+      <div class="day">
+          <div class="header">
+              Piątek
+          </div>
+          <div style="top:21%;height:12%;" class="lecture type1">
+              {{termin.prowadzacy}}
+              <p>{{termin.start}} - {{termin.koniec}}</p>
+              <span>Miejsce</span>
+          </div>
+      </div>
+      
+  </div>
+        </div>
+      </div>
+  
+  </body>
+  </html>

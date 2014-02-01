@@ -60,8 +60,6 @@
     position: absolute;
     width: 100%;
     padding: 2%;
-    text-align: left;
-    overflow:hidden;
 }
 #ed-calendar .lecture p, #ed-calendar .lecture span  {
     display: none;
@@ -75,19 +73,6 @@
 #ed-calendar .day .lecture:hover {
     height:auto!important;
     z-index: 1;
-}
-#ed-calendar .day .lecture .delete-lecture{
-    visibility:hidden;
-    font-size: 20px;
-    font-style:normal;
-    position: absolute;
-    top:0px;
-    right: 7px;
-    cursor: pointer;
-    color: #FFF0F5;
-}
-#ed-calendar .day .lecture .delete-lecture:hover{
-    color: #fff;
 }
 /*
 odleglosci od gornej krawedzi

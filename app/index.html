@@ -24,7 +24,7 @@
       <div id="ed-sidebar">
           <ul>
               <li>Plan</li>
-              <li ng-repeat="dana in dane" own-terminy="dana" change-terminy="changeTerminy" drag-element ng-class="[services.type(dana.typ), services.isDone(dana.terminy) ? 'type6' : '']">{{dana.nazwa}}</li>
+              <li ng-repeat="dana in dane" own-terminy="dana" trigger-droppable="services.isDone(dana.terminy)"change-terminy="changeTerminy" drag-element ng-class="[services.type(dana.typ), services.isDone(dana.terminy) ? 'type6' : '']">{{dana.nazwa}}</li>
           </ul>    
       </div>
       <div id="ed-center">
@@ -37,7 +37,6 @@
           </ul>
         </div>
         <div id="ed-content">
-        {{plan}}
      <div id="ed-calendar">
      
       <div class="hours">
@@ -57,6 +56,7 @@
               {{termin.prowadzacy}}
               <p>{{termin.start}} - {{termin.koniec}}</p>
               <span>Miejsce</span>
+              <i class="delete-lecture" ng-click="services.deleteFromPlan(plan, termin)"ng-class="{active:termin.active}">&times</i>
           </div>
       </div>
       <div class="day">
@@ -67,6 +67,7 @@
               {{termin.prowadzacy}}
               <p>{{termin.start}} - {{termin.koniec}}</p>
               <span>Miejsce</span>
+              <i class="delete-lecture" ng-click="services.deleteFromPlan(plan, termin)"ng-class="{active:termin.active}">&times</i>
           </div>
       </div>
       <div class="day">
@@ -77,6 +78,7 @@
               {{termin.prowadzacy}}
               <p>{{termin.start}} - {{termin.koniec}}</p>
               <span>Miejsce</span>
+              <i class="delete-lecture" ng-click="services.deleteFromPlan(plan, termin)"ng-class="{active:termin.active}">&times</i>
           </div>
       </div>
       <div class="day">
@@ -87,6 +89,7 @@
               {{termin.prowadzacy}}
               <p>{{termin.start}} - {{termin.koniec}}</p>
               <span>Miejsce</span>
+              <i class="delete-lecture" ng-click="services.deleteFromPlan(plan, termin)"ng-class="{active:termin.active}">&times</i>
           </div>
       </div>
       <div class="day">
@@ -97,11 +100,14 @@
               {{termin.prowadzacy}}
               <p>{{termin.start}} - {{termin.koniec}}</p>
               <span>Miejsce</span>
+              <i class="delete-lecture" ng-click="services.deleteFromPlan(plan, termin)"ng-class="{active:termin.active}">&times</i>
           </div>
       </div>
       
   </div>
         </div>
+        
+        {{plan}}
       </div>
     <script src="lib/jquery/jquery.js" type="text/javascript"></script>
     <script src="lib/bootstrap/dist/js/bootstrap.js" type="text/javascript"></script>
