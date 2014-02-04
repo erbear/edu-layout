@@ -1,70 +1,58 @@
-/*
-wszyskie typy zajec
-type1 - wyklad
-type2 - laborki
-type3 - cwiczenia
-type4 - seminarium
-type5 - nie wiem
-*/
-.type1{
-    background-color: #428bca;
-    color: #fff;
-    border: 1px solid #428bca;
-}
-.type1:hover{
-    border: 1px solid #214e74;
-}
-.type2{
-    background-color: #f0ad4e;
-    color: #fff;
-    border: 1px solid #f0ad4e;
-}
-.type2:hover{
-    border: 1px solid #e78f14;
-}
-.type3{
-    background-color: #5cb85c;
-    color: #fff;
-    border: 1px solid #5cb85c;
-    
-}
-.type3:hover{
-    border: 1px solid #357935;
-}
-.type4{
-    background-color: #d9534f;
-    color: #fff;
-    border: 1px solid #d9534f;
-    
-}
-.type4:hover{
-    border: 1px solid #bc2d28;
-}
-.type5{
-    background-color: #5bc0de;
-    color: #fff;
-    border: 1px solid #5bc0de;
-}
-.type5:hover{
-    border: 1px solid #269bbe;
-}
-.type6{
-    background-color: #FFF0F5;
-    color: #969696;
-    border: 1px solid #FFF0F5;
-}
-.type6:hover{
-    border: 1px solid #969696;
-}
-.type7{
-    background-color: #DC143C;
-    color: #fff;
-    border: 1px solid #DC143C;
-}
-.type7:hover{
-    border: 1px solid #b80025;
-}
+.type1 {
+  background-color: #428bca;
+  color: white;
+  border: 1px solid #3276b1; }
+  .type1:hover {
+    border: 1px solid #1f496e;
+    background-color: #357ebd; }
 
-.active{
-    visibility: visible!important;
-}
+.type2 {
+  background-color: #f0ad4e;
+  color: white;
+  border: 1px solid #ed9c28; }
+  .type2:hover {
+    border: 1px solid #b06d0f;
+    background-color: #eea236; }
+
+.type3 {
+  background-color: #5cb85c;
+  color: white;
+  border: 1px solid #47a447; }
+  .type3:hover {
+    border: 1px solid #2d672d;
+    background-color: #4cae4c; }
+
+.type4 {
+  background-color: #d9534f;
+  color: white;
+  border: 1px solid #d2322d; }
+  .type4:hover {
+    border: 1px solid #8b211e;
+    background-color: #d43f3a; }
+
+.type5 {
+  background-color: #5bc0de;
+  color: white;
+  border: 1px solid #39b3d7; }
+  .type5:hover {
+    border: 1px solid #1f7e9a;
+    background-color: #46b8da; }
+
+.type6 {
+  background-color: lavenderblush;
+  color: #969696;
+  border: 1px solid #ffc7da; }
+  .type6:hover {
+    border: 1px solid #ff71a0;
+    background-color: #ffd7e4; }
+
+.type7 {
+  background-color: crimson;
+  color: white;
+  border: 1px solid #b71132; }
+  .type7:hover {
+    border: 1px solid #67091c;
+    background-color: #c51236; }
+
+.active {
+  visibility: visible !important; }

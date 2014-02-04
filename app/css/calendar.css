@@ -1,119 +1,148 @@
-#ed-calendar{
-    width: 1000px;
-    height: 400px;
-    font-family: calibri;
-}
+.type1 {
+  background-color: #428bca;
+  color: white;
+  border: 1px solid #3276b1; }
+  .type1:hover {
+    border: 1px solid #1f496e;
+    background-color: #357ebd; }
 
-/*
-#ed-calendar{
-    width: inherit;
-    height: inherit;
-}
-*/
+.type2 {
+  background-color: #f0ad4e;
+  color: white;
+  border: 1px solid #ed9c28; }
+  .type2:hover {
+    border: 1px solid #b06d0f;
+    background-color: #eea236; }
 
-#ed-calendar *,*:after, *:before{
+.type3 {
+  background-color: #5cb85c;
+  color: white;
+  border: 1px solid #47a447; }
+  .type3:hover {
+    border: 1px solid #2d672d;
+    background-color: #4cae4c; }
+
+.type4 {
+  background-color: #d9534f;
+  color: white;
+  border: 1px solid #d2322d; }
+  .type4:hover {
+    border: 1px solid #8b211e;
+    background-color: #d43f3a; }
+
+.type5 {
+  background-color: #5bc0de;
+  color: white;
+  border: 1px solid #39b3d7; }
+  .type5:hover {
+    border: 1px solid #1f7e9a;
+    background-color: #46b8da; }
+
+.type6 {
+  background-color: lavenderblush;
+  color: #969696;
+  border: 1px solid #ffc7da; }
+  .type6:hover {
+    border: 1px solid #ff71a0;
+    background-color: #ffd7e4; }
+
+.type7 {
+  background-color: crimson;
+  color: white;
+  border: 1px solid #b71132; }
+  .type7:hover {
+    border: 1px solid #67091c;
+    background-color: #c51236; }
+
+.active {
+  visibility: visible !important; }
+
+#ed-calendar {
+  width: 1000px;
+  height: 400px;
+  font-family: calibri; }
+  #ed-calendar * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-#ed-calendar .options {
+    box-sizing: border-box; }
+  #ed-calendar .options {
     margin: 0 0 2% 0;
-    width: 100%;
-}
-#ed-calendar .hours {
+    width: 100%; }
+  #ed-calendar .hours {
     float: left;
     width: 5%;
     position: relative;
     height: 100%;
     text-align: left;
     margin: 0;
-    padding: 0;
-}
-#ed-calendar .hours p {
-    position: absolute;
-    width: 2000%;
-    border-top: 1px solid #ddd;
-    margin: 0 0 10px
-}
-#ed-calendar .day {
+    padding: 0; }
+    #ed-calendar .hours p {
+      position: absolute;
+      width: 2000%;
+      border-top: 1px solid #ddd;
+      margin: 0 0 10px; }
+  #ed-calendar .day {
     width: 19%;
     height: 100%;
     float: left;
     border: 1px solid #aaa;
     border-right: 0px;
-    position: relative;
-}
-#ed-calendar .day:last-child {
-    border: 1px solid #aaa;
-}
-
-#ed-calendar .header {
+    position: relative; }
+    #ed-calendar .day:last-child {
+      border: 1px solid #aaa; }
+    #ed-calendar .day .lecture {
+      font-size: 14px;
+      position: absolute;
+      width: 100%;
+      padding: 2%;
+      text-align: left;
+      overflow: hidden;
+      z-index: 3; }
+      #ed-calendar .day .lecture p, #ed-calendar .day .lecture span {
+        font-size: 12px;
+        padding: 2%;
+        margin: 0; }
+      #ed-calendar .day .lecture:hover {
+        height: auto !important;
+        z-index: 4; }
+        #ed-calendar .day .lecture:hover p, #ed-calendar .day .lecture:hover span {
+          display: block; }
+    #ed-calendar .day .taken {
+      width: 100%;
+      border: 2px dashed #8a002e;
+      position: absolute;
+      z-index: 99;
+      pointer-events: none;
+      filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='your_transparent.png', sizingMethod='scale');
+      background: none !important; }
+    #ed-calendar .day .TP {
+      width: 50%;
+      left: 0; }
+      #ed-calendar .day .TP:hover:not(.taken) {
+        width: 100%; }
+    #ed-calendar .day .TN {
+      width: 50%;
+      right: 0; }
+      #ed-calendar .day .TN:hover:not(.taken) {
+        width: 100%; }
+  #ed-calendar .header {
     font-weight: bold;
     padding: 6% 0;
     height: 10%;
-    text-align:center;
-    border-bottom: 1px solid #aaa;
-}
-
-#ed-calendar .day .lecture {
-    font-size: 14px;
-    position: absolute;
-    width: 100%;
-    padding: 2%;
-    text-align: left;
-    overflow:hidden;
-}
-#ed-calendar .lecture p, #ed-calendar .lecture span  {
-    font-size: 12px;
-    padding: 2%;
-    margin: 0;
-}
-#ed-calendar .lecture:hover p, #ed-calendar .lecture:hover span  {
-    display: block;
-}
-#ed-calendar .day .lecture:hover {
-    height:auto!important;
-    z-index: 1;
-}
-#ed-calendar .day .lecture .delete-lecture{
-    visibility:hidden;
-    font-size: 20px;
-    font-style:normal;
-    position: absolute;
-    top:0px;
-    right: 7px;
-    cursor: pointer;
-    color: #FFF0F5;
-}
-#ed-calendar .day .lecture .delete-lecture:hover{
-    color: #fff;
-}
-/*
-odleglosci od gornej krawedzi
-*/
-#ed-calendar .lecture1{
+    text-align: center;
+    border-bottom: 1px solid #aaa; }
+  #ed-calendar .lecture1 {
     top: 10%;
-    height: 15%;
-}
-#ed-calendar .lecture2{
-    top: 21.66666666666655%;
-}
-#ed-calendar .lecture3{
-    top: 34.99999999999975%;
-}
-#ed-calendar .lecture4{
-    top: 48.333333333333333295%;
-}
-#ed-calendar .lecture5{
-    top: 61.666666666666653295%;
-}
-#ed-calendar .lecture6{
-    top: 73.888888888888753295%;
-}
-#ed-calendar .lecture7{
-    top: 86.111111111110853295%;
-}
-#ed-calendar .selected{
-    background-color:#ce0e0e!important;
-    border: 1px solid #9d0202!important;
-}
+    height: 15%; }
+  #ed-calendar .lecture2 {
+    top: 21.66667%; }
+  #ed-calendar .lecture3 {
+    top: 35.0%; }
+  #ed-calendar .lecture4 {
+    top: 48.33333%; }
+  #ed-calendar .lecture5 {
+    top: 61.66667%; }
+  #ed-calendar .lecture6 {
+    top: 73.88889%; }
+  #ed-calendar .lecture7 {
+    top: 86.11111%; }

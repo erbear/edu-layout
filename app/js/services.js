@@ -5,22 +5,6 @@
 
 angular.module('ZapisyServices', []).
   service('CalendarService', [function(){
-  	//funkcje filtrujace zajecia wg dni
-  	this.pn = function(zajecie){
-        return zajecie.dzien == "Pn";
-    }
-    this.wt = function(zajecie){
-        return zajecie.dzien == "Wt";
-    }
-    this.sr = function(zajecie){
-        return zajecie.dzien == "Sr";
-    }
-    this.czw = function(zajecie){
-        return zajecie.dzien == "Czw";
-    }
-    this.pt = function(zajecie){
-        return zajecie.dzien == "Pt";
-    }
     //wysokosc cegielki zalezaca od dlugosci trwania
     this.height = function(start, koniec){
         var godzinaStart = new Date('2014/01/03 ' + start);
@@ -41,14 +25,22 @@ angular.module('ZapisyServices', []).
     }
     //typ cegielki z zajeciami (wyklad, labolatoria itd.)
     this.type = function(rodzaj){
-        if(rodzaj == "W"){
+        if(rodzaj == "1"){
             return 'type1';
         }else{
-            if(rodzaj == "L"){
+            if(rodzaj == "2"){
                 return 'type2';
             } else {
-                if (rodzaj == "Ćwiczenia"){
+                if (rodzaj == "3"){
                     return 'type3';
+                }else {
+                    if (rodzaj == "4"){
+                        return 'type4';
+                    }else {
+                        if (rodzaj == "5"){
+                            return 'type5';
+                        }
+                    }
                 }
             }
         }
@@ -80,15 +72,48 @@ angular.module('ZapisyServices', []).
     	}
     	return id;
     }
-    //usuwa z tablicy obiekt na podanej pozycji
-    Array.prototype.remove = function(from, to) {
-	  var rest = this.slice((to || from) + 1 || this.length);
-	  this.length = from < 0 ? this.length + from : from;
-	  return this.push.apply(this, rest);
-	};
-	//usuwa z planu podany termin
-	this.deleteFromPlan = function(plan, termin){
-		plan.remove(this.findInPlan(plan,termin.nazwa));
-		termin.active = false;
-	}
+    this.customizeJSON = function(data){
+        var copy = new Array();
+        data.forEach(function(lecture){//po przedmiotach
+            var tmp = new Array();
+            lecture.teachers = new Array();
+            lecture.terms.forEach(function(term){//po terminach
+                if (tmp.indexOf(term.teacher_id) == -1){//sprawdza czy ten prowadzacy byl juz w tej petli 
+                    tmp.push(term.teacher_id);
+                    lecture.teachers[tmp.indexOf(term.teacher_id)] = {};//jak nie to tworzy nowy obiekt z dniami tygodnia
+                    lecture.teachers[tmp.indexOf(term.teacher_id)].nazwa = term.teacher.name;
+                    lecture.teachers[tmp.indexOf(term.teacher_id)].cz = new Array();
+                    lecture.teachers[tmp.indexOf(term.teacher_id)].pt = new Array();
+                    lecture.teachers[tmp.indexOf(term.teacher_id)].pn = new Array();
+                    lecture.teachers[tmp.indexOf(term.teacher_id)].sr = new Array();
+                    lecture.teachers[tmp.indexOf(term.teacher_id)].wt = new Array();
+                }
+                //kazde zajecie wkladam w odpowiedni dzien
+                if(term.day_id == 1){
+                    lecture.teachers[tmp.indexOf(term.teacher_id)].cz.push(term);
+                } else {
+                    if (term.day_id == 2) {
+                        lecture.teachers[tmp.indexOf(term.teacher_id)].pt.push(term);
+                    } else {
+                        if (term.day_id == 3) {
+                            lecture.teachers[tmp.indexOf(term.teacher_id)].pn.push(term);
+                        } else {
+                            if (term.day_id == 4) {
+                                lecture.teachers[tmp.indexOf(term.teacher_id)].sr.push(term);
+                            } else {
+                                if (term.day_id == 5) {
+                                    lecture.teachers[tmp.indexOf(term.teacher_id)].wt.push(term);
+                                } 
+                            }
+                        }
+                    }
+                }
+            }); 
+            //usuwam nie potrzebny obiekt
+            delete lecture.terms;
+            //wkladam do tablicy zajec
+            copy.push(lecture);
+        });
+        return copy;
+    }
   }]);

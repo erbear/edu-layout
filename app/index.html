@@ -9,35 +9,33 @@
     <title>Starter Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
+<!--
+    <link href="lib/bootstrap/bootstrap.css" rel="stylesheet">
 
-    <link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-
-<!--      Add custom CSS here 
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"> -->
-
+     Add custom CSS here 
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+-->
+    <link href="css/global.css" rel="stylesheet">
     <link href="css/calendar.css" rel="stylesheet">
     <link href="css/layout.css" rel="stylesheet">
-    <link href="css/global.css" rel="stylesheet">
   </head>
 
   <body ng-controller="MainController">
+      
       <div id="ed-sidebar">
           <ul>
               <li>Plan</li>
-              <li ng-repeat="dana in dane" own-terminy="dana" trigger-droppable="services.isDone(dana.terminy)"change-terminy="changeTerminy" drag-element ng-class="[services.type(dana.typ), services.isDone(dana.terminy) ? 'type6' : '']">{{dana.nazwa}}</li>
+              <li ng-repeat="dana in dane" ng-click="changeSubject(dana)" ng-class="[services.type(dana.kind.id)]">{{dana.name}}</li>
           </ul>    
       </div>
       <div id="ed-center">
         <div id="ed-navbar">
           <ul>
-              <li>pierwszy</li>
-              <li>drugi</li>
-              <li>trzeci</li>
-              <li>czwarty</li>
+              <li ng-repeat="nauczyciel in nauczyciele" ng-click="changeTeacher(nauczyciel)">{{nauczyciel.nazwa}}</li>
           </ul>
         </div>
         <div id="ed-content">
-     <div id="ed-calendar">
+            <div id="ed-calendar">
      
       <div class="hours">
           <p class="lecture1">7:30</p>
@@ -52,70 +50,66 @@
           <div class="header">
               Poniedziałek
           </div>
-          <div ng-repeat="termin in przedmiot.terminy | filter:services.pn" own-termin="termin" add-to-plan="addLecture" drop-element style="top:{{services.top(termin.start)}}%;height:{{services.height(termin.start, termin.koniec)}}%;min-height:{{services.height(termin.start, termin.koniec)}}%;" class="lecture ng-class:services.isChosen(termin.active, przedmiot.typ)">
-              {{termin.prowadzacy}}
+          <div ng-repeat="przedmiot in przedmioty.pn" style="top:{{services.top(przedmiot.hour.start)}}%;height:{{services.height(przedmiot.hour.start, przedmiot.hour.finish)}}%;min-height:{{services.height(przedmiot.hour.start, przedmiot.hour.finish)}}%;" ng-click="addLecture(services.findInPlan(plan, termin.nazwa),termin)"class="lecture ng-class:services.isChosen(termin.active, przedmiot.typ)">
+              {{przedmiot.teacher.name}}
               <p>{{termin.start}} - {{termin.koniec}}</p>
               <span>Miejsce</span>
-              <i class="delete-lecture" ng-click="services.deleteFromPlan(plan, termin)"ng-class="{active:termin.active}">&times</i>
+          </div>
+          <div ng-repeat="zajecie in plan | filter:services.pn" style="top:{{services.top(zajecie.start)}}%;height:{{services.height(zajecie.start, zajecie.koniec)}}%;min-height:{{services.height(zajecie.start, zajecie.koniec)}}%;" class="taken">
           </div>
       </div>
       <div class="day">
           <div class="header">
               Wtorek
           </div>
-          <div ng-repeat="termin in przedmiot.terminy | filter:services.wt" own-termin="termin" add-to-plan="addLecture" drop-element style="top:{{services.top(termin.start)}}%;height:{{services.height(termin.start, termin.koniec)}}%;min-height:{{services.height(termin.start, termin.koniec)}}%;" class="lecture ng-class:services.isChosen(termin.active, przedmiot.typ)">
-              {{termin.prowadzacy}}
+          <div ng-repeat="przedmiot in przedmioty.wt" style="top:{{services.top(przedmiot.hour.start)}}%;height:{{services.height(przedmiot.hour.start, przedmiot.hour.finish)}}%;min-height:{{services.height(przedmiot.hour.start, przedmiot.hour.finish)}}%;" ng-click="addLecture(services.findInPlan(plan, termin.nazwa),termin)"class="lecture ng-class:services.isChosen(termin.active, przedmiot.typ)">
+              {{przedmiot.teacher.name}}
               <p>{{termin.start}} - {{termin.koniec}}</p>
               <span>Miejsce</span>
-              <i class="delete-lecture" ng-click="services.deleteFromPlan(plan, termin)"ng-class="{active:termin.active}">&times</i>
+          </div>
+          <div ng-repeat="zajecie in plan | filter:services.wt" style="top:{{services.top(zajecie.start)}}%;height:{{services.height(zajecie.start, zajecie.koniec)}}%;min-height:{{services.height(zajecie.start, zajecie.koniec)}}%;" class="taken">
           </div>
       </div>
       <div class="day">
           <div class="header">
               Środa
           </div>
-          <div ng-repeat="termin in przedmiot.terminy | filter:services.sr" own-termin="termin" add-to-plan="addLecture" drop-element style="top:{{services.top(termin.start)}}%;height:{{services.height(termin.start, termin.koniec)}}%;min-height:{{services.height(termin.start, termin.koniec)}}%;" class="lecture ng-class:services.isChosen(termin.active, przedmiot.typ)">
-              {{termin.prowadzacy}}
+          <div ng-repeat="przedmiot in przedmioty.sr" style="top:{{services.top(przedmiot.hour.start)}}%;height:{{services.height(przedmiot.hour.start, przedmiot.hour.finish)}}%;min-height:{{services.height(przedmiot.hour.start, przedmiot.hour.finish)}}%;" ng-click="addLecture(services.findInPlan(plan, termin.nazwa),termin)"class="lecture ng-class:services.isChosen(termin.active, przedmiot.typ)">
+              {{przedmiot.teacher.name}}
               <p>{{termin.start}} - {{termin.koniec}}</p>
               <span>Miejsce</span>
-              <i class="delete-lecture" ng-click="services.deleteFromPlan(plan, termin)"ng-class="{active:termin.active}">&times</i>
+          </div>
+          <div ng-repeat="zajecie in plan | filter:services.sr" style="top:{{services.top(zajecie.start)}}%;height:{{services.height(zajecie.start, zajecie.koniec)}}%;min-height:{{services.height(zajecie.start, zajecie.koniec)}}%;" class="taken">
           </div>
       </div>
       <div class="day">
           <div class="header">
               Czwartek
           </div>
-          <div ng-repeat="termin in przedmiot.terminy | filter:services.czw" own-termin="termin" add-to-plan="addLecture" drop-element style="top:{{services.top(termin.start)}}%;height:{{services.height(termin.start, termin.koniec)}}%;min-height:{{services.height(termin.start, termin.koniec)}}%;" class="lecture ng-class:services.isChosen(termin.active, przedmiot.typ)">
-              {{termin.prowadzacy}}
+          <div ng-repeat="przedmiot in przedmioty.cz" style="top:{{services.top(przedmiot.hour.start)}}%;height:{{services.height(przedmiot.hour.start, przedmiot.hour.finish)}}%;min-height:{{services.height(przedmiot.hour.start, przedmiot.hour.finish)}}%;" ng-click="addLecture(services.findInPlan(plan, termin.nazwa),termin)"class="lecture ng-class:services.isChosen(termin.active, przedmiot.typ)">
+              {{przedmiot.teacher.name}}
               <p>{{termin.start}} - {{termin.koniec}}</p>
               <span>Miejsce</span>
-              <i class="delete-lecture" ng-click="services.deleteFromPlan(plan, termin)"ng-class="{active:termin.active}">&times</i>
+          </div>
+          <div ng-repeat="zajecie in plan | filter:services.czw" style="top:{{services.top(zajecie.start)}}%;height:{{services.height(zajecie.start, zajecie.koniec)}}%;min-height:{{services.height(zajecie.start, zajecie.koniec)}}%;" class="taken">
           </div>
       </div>
       <div class="day">
           <div class="header">
               Piątek
           </div>
-          <div ng-repeat="termin in przedmiot.terminy | filter:services.pt" own-termin="termin" add-to-plan="addLecture" drop-element style="top:{{services.top(termin.start)}}%;height:{{services.height(termin.start, termin.koniec)}}%;min-height:{{services.height(termin.start, termin.koniec)}}%;" class="lecture ng-class:services.isChosen(termin.active, przedmiot.typ)">
-              {{termin.prowadzacy}}
+          <div ng-repeat="przedmiot in przedmioty.pt" style="top:{{services.top(przedmiot.hour.start)}}%;height:{{services.height(przedmiot.hour.start, przedmiot.hour.finish)}}%;min-height:{{services.height(przedmiot.hour.start, przedmiot.hour.finish)}}%;" ng-click="addLecture(services.findInPlan(plan, termin.nazwa),termin)"class="lecture ng-class:services.isChosen(termin.active, przedmiot.typ)">
+              {{przedmiot.teacher.name}}
               <p>{{termin.start}} - {{termin.koniec}}</p>
               <span>Miejsce</span>
-              <i class="delete-lecture" ng-click="services.deleteFromPlan(plan, termin)"ng-class="{active:termin.active}">&times</i>
+          </div>
+          <div ng-repeat="zajecie in plan | filter:services.pt" style="top:{{services.top(zajecie.start)}}%;height:{{services.height(zajecie.start, zajecie.koniec)}}%;min-height:{{services.height(zajecie.start, zajecie.koniec)}}%;" class="taken">
           </div>
       </div>
       
   </div>
         </div>
-        
-        {{plan}}
       </div>
-    <script src="lib/jquery/jquery.js" type="text/javascript"></script>
-    <script src="lib/bootstrap/dist/js/bootstrap.js" type="text/javascript"></script>
-    <script src="lib/jquery.ui/ui/jquery.ui.core.js"></script>
-    <script src="lib/jquery.ui/ui/jquery.ui.widget.js"></script>
-    <script src="lib/jquery.ui/ui/jquery.ui.mouse.js"></script>
-    <script src="lib/jquery.ui/ui/jquery.ui.draggable.js" type="text/javascript"></script>
-    <script src="lib/jquery.ui/ui/jquery.ui.droppable.js" type="text/javascript"></script>
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular/angular-route.js"></script>
     <script src="lib/angular/angular-resource.js"></script>

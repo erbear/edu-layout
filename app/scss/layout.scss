@@ -1,0 +1,68 @@
+@import "global";
+
+@mixin list(){
+    list-style:none;
+    margin: 0;
+    padding: 0;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: calibri;
+}
+
+#ed-sidebar {
+    width: 220px;
+    float:left;
+    ul{
+    	@include list;
+    	li{
+		    padding: 10px 10px;
+		    font-style:italic;
+		    font-family: georgia;
+		    font-size: 13px;
+		    max-width: inherit;
+		    clear: left;
+		    float:left;
+		    cursor:pointer;
+		    z-index: 99;
+		    &:first-child{
+			    background-color: #f95521;
+			    color: #fff;
+				&:hover{
+   					background-color: #e84613;
+				} 	
+		    }
+    	}
+    }
+}
+#ed-navbar {
+    width: 1000px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    text-align:center;
+	ul{
+		@include list;
+		li{
+		    display:inline-block;
+    		height: 20px;
+		    padding: 10px 20px;
+		    cursor:pointer;
+			border-bottom:1px solid #fff;
+		    &:hover{
+			    border-bottom:1px solid #aaa;
+			    background-color: $szary;
+		    }
+		}
+	}
+}
+#ed-content {
+    width: 1000px;
+    margin: auto;
+}
+#ed-center {
+    margin: auto;
+    margin-left: 210px;
+    text-align: center;
+}
