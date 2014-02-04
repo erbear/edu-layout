@@ -64,7 +64,6 @@
     overflow:hidden;
 }
 #ed-calendar .lecture p, #ed-calendar .lecture span  {
-    display: none;
     font-size: 12px;
     padding: 2%;
     margin: 0;
