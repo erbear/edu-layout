@@ -55,14 +55,18 @@ angular.module('ZapisyServices', []).
     
     //szuka w planie obiektu o podanej nazwie, zwraca miejsce w tablicy gdzie 
     //jest znaleziony obiekt
-    this.findInPlan = function(plan, _id){
-    	var id = -1;
-    	for (var i = 0; i<plan.length; i++){
-    		if (plan[i].lecture_id === _id){
-    			id = i;
-    		}
-    	}
-    	return id;
+    this.findInPlan = function(plan, lecture_id){// plan i id
+    	var tmp = {dzien: -1, id: -1};//nie ma zadnego dnia ani terminu w planie
+        Object.getOwnPropertyNames(plan).forEach(function(val) {//zwracam nazwy pol z obiektow
+            for(var i = 0; i<plan[val].length; i++){//petla po tablicy z kazdego pola
+                if (plan[val][i].lecture_id == lecture_id) {//jezeli id zajecia w terminu planu odpowiada szukanemu
+                    //to daje to do zmiennej ktora zwroce
+                    tmp.dzien = val;
+                    tmp.id = i;
+                }
+            }
+        });
+    	return tmp;
     }
     this.customizeJSON = function(data){
         var copy = new Array();
@@ -108,16 +112,19 @@ angular.module('ZapisyServices', []).
         });
         return copy;
     }
+    //dodaje termin do planu
     this.addLecture = function(plan, lecture){
-        var id = this.findInPlan(plan, lecture.lecture_id);//miejsce danego terminu w planie
-        if (id != -1 ){//jezeli znalazlo termin w planie
-            if (plan[id].id == lecture.id){// jezeli termin_id zgadadza sie z szukanym terminem_id
-                plan.remove(this.findInPlan(plan, lecture.lecture_id));//usuwam
-                lecture.active = false;
-            }
-        } else {
-            plan.push(lecture);// w przeciwnym razie dodaje
-            lecture.active = true;
+
+        var tmp = this.findInPlan(plan, lecture.lecture_id);//szuka terminu w planie
+
+        if(tmp.dzien != -1){//jezeli znajdzie termin w planie
+            if(plan[tmp.dzien][tmp.id].id == lecture.id){//sprawdza czy id terminu w planie zgadza sie z szukanym terminem
+                plan[tmp.dzien].remove(tmp.id);//usuwa termin z planu
+                lecture.active = false;//mowi terminowi ze nie ma go juz w planie
+            } 
+        }else {//jezeli nie ma terminu w planie
+            plan[lecture.day_id].push(lecture);//dodaje termin do planu na wyznaczone miejsce
+            lecture.active = true;//mowi terminowi ze znajduje sie w planie
         }
     }
   }]);

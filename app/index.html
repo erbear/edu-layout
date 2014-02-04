@@ -25,7 +25,7 @@
       <div id="ed-sidebar">
           <ul>
               <li>Plan</li>
-              <li ng-repeat="dana in dane" ng-click="changeSubject(dana)" ng-class="[services.type(dana.kind.id), isDone(plan ,dana.id) ? 'type6' : '']">{{dana.name}} {{isDone(plan,dana.id)}}</li>
+              <li ng-repeat="dana in dane" ng-click="changeSubject(dana)" ng-class="[services.type(dana.kind.id), isDone(plan, dana) ? 'type6' : '']">{{dana.name}} {{isDone(plan,dana.id)}}</li>
           </ul>    
       </div>
       <div id="ed-center">

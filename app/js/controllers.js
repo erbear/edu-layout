@@ -10,7 +10,7 @@ angular.module('ZapisyControllers', [])
       $scope.nauczyciele = newData[5].teachers
   		$scope.przedmioty = newData[0].teachers[0];
   	});
-  	$scope.plan = [];
+  	$scope.plan = {1: new Array("cos"), 2: new Array(), 3: new Array(), 4: new Array(), 5: new Array() };
   	$scope.services = CalendarService;
   	$scope.changeSubject = function(data){
       $scope.nauczyciele = data.teachers
@@ -27,20 +27,11 @@ angular.module('ZapisyControllers', [])
       return this.push.apply(this, rest);
     };
   	
-    
-    $scope.deleteFromPlan = function(termin){
-      $scope.plan.remove(CalendarService.findInPlan($scope.plan,termin.nazwa));
-      termin.active = false;
-    }
-    $scope.isDone = function(plan, przedmiot_id){
-      var isCompleted = false;
-      $scope.plan.every(function(termin){
-        if (termin.lecture_id == przedmiot_id){
-          isCompleted = true;
-          return false;
-        }
+    $scope.isDone = function(plan, przedmiot){
+      var tmp = $scope.services.findInPlan(plan, przedmiot.id);//szuka przedmiotu w planie
+      if( tmp.dzien != -1){//jak znajdzie to git
         return true;
-      });
-      return isCompleted; 
+      }
+      return false; 
     }
   }]);
