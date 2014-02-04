@@ -25,7 +25,7 @@
       <div id="ed-sidebar">
           <ul>
               <li>Plan</li>
-              <li ng-repeat="dana in dane" ng-click="changeSubject(dana)" ng-class="[services.type(dana.kind.id)]">{{dana.name}}</li>
+              <li ng-repeat="dana in dane" ng-click="changeSubject(dana)" ng-class="[services.type(dana.kind.id), isDone(plan ,dana.id) ? 'type6' : '']">{{dana.name}} {{isDone(plan,dana.id)}}</li>
           </ul>    
       </div>
       <div id="ed-center">
@@ -50,22 +50,19 @@
           <div class="header">
               Poniedziałek
           </div>
-          <div ng-repeat="przedmiot in przedmioty.pn" style="top:{{services.top(przedmiot.hour.start)}}%;height:{{services.height(przedmiot.hour.start, przedmiot.hour.finish)}}%;min-height:{{services.height(przedmiot.hour.start, przedmiot.hour.finish)}}%;" ng-click="addLecture(services.findInPlan(plan, termin.nazwa),termin)"class="lecture ng-class:services.isChosen(termin.active, przedmiot.typ)">
-              {{przedmiot.teacher.name}}
-              <p>{{termin.start}} - {{termin.koniec}}</p>
-              <span>Miejsce</span>
+          <div ed-przedmioty przedmioty="przedmioty.pn" plan="plan" typ="typ">
           </div>
-          <div ng-repeat="zajecie in plan | filter:services.pn" style="top:{{services.top(zajecie.start)}}%;height:{{services.height(zajecie.start, zajecie.koniec)}}%;min-height:{{services.height(zajecie.start, zajecie.koniec)}}%;" class="taken">
+          <div ng-repeat="zajecie in plan | filter:services.pn" style="
+              top:{{services.top(zajecie.hour.start)}}%;
+              height:{{services.height(zajecie.hour.start, zajecie.hour.finish)}}%;
+              min-height:{{services.height(zajecie.hour.start, zajecie.hour.finish)}}%;"  class="taken">
           </div>
       </div>
       <div class="day">
           <div class="header">
               Wtorek
           </div>
-          <div ng-repeat="przedmiot in przedmioty.wt" style="top:{{services.top(przedmiot.hour.start)}}%;height:{{services.height(przedmiot.hour.start, przedmiot.hour.finish)}}%;min-height:{{services.height(przedmiot.hour.start, przedmiot.hour.finish)}}%;" ng-click="addLecture(services.findInPlan(plan, termin.nazwa),termin)"class="lecture ng-class:services.isChosen(termin.active, przedmiot.typ)">
-              {{przedmiot.teacher.name}}
-              <p>{{termin.start}} - {{termin.koniec}}</p>
-              <span>Miejsce</span>
+          <div ed-przedmioty przedmioty="przedmioty.wt" plan="plan" typ="typ">
           </div>
           <div ng-repeat="zajecie in plan | filter:services.wt" style="top:{{services.top(zajecie.start)}}%;height:{{services.height(zajecie.start, zajecie.koniec)}}%;min-height:{{services.height(zajecie.start, zajecie.koniec)}}%;" class="taken">
           </div>
@@ -74,10 +71,7 @@
           <div class="header">
               Środa
           </div>
-          <div ng-repeat="przedmiot in przedmioty.sr" style="top:{{services.top(przedmiot.hour.start)}}%;height:{{services.height(przedmiot.hour.start, przedmiot.hour.finish)}}%;min-height:{{services.height(przedmiot.hour.start, przedmiot.hour.finish)}}%;" ng-click="addLecture(services.findInPlan(plan, termin.nazwa),termin)"class="lecture ng-class:services.isChosen(termin.active, przedmiot.typ)">
-              {{przedmiot.teacher.name}}
-              <p>{{termin.start}} - {{termin.koniec}}</p>
-              <span>Miejsce</span>
+          <div ed-przedmioty przedmioty="przedmioty.sr" plan="plan" typ="typ">
           </div>
           <div ng-repeat="zajecie in plan | filter:services.sr" style="top:{{services.top(zajecie.start)}}%;height:{{services.height(zajecie.start, zajecie.koniec)}}%;min-height:{{services.height(zajecie.start, zajecie.koniec)}}%;" class="taken">
           </div>
@@ -86,10 +80,7 @@
           <div class="header">
               Czwartek
           </div>
-          <div ng-repeat="przedmiot in przedmioty.cz" style="top:{{services.top(przedmiot.hour.start)}}%;height:{{services.height(przedmiot.hour.start, przedmiot.hour.finish)}}%;min-height:{{services.height(przedmiot.hour.start, przedmiot.hour.finish)}}%;" ng-click="addLecture(services.findInPlan(plan, termin.nazwa),termin)"class="lecture ng-class:services.isChosen(termin.active, przedmiot.typ)">
-              {{przedmiot.teacher.name}}
-              <p>{{termin.start}} - {{termin.koniec}}</p>
-              <span>Miejsce</span>
+          <div ed-przedmioty przedmioty="przedmioty.cz" plan="plan" typ="typ">
           </div>
           <div ng-repeat="zajecie in plan | filter:services.czw" style="top:{{services.top(zajecie.start)}}%;height:{{services.height(zajecie.start, zajecie.koniec)}}%;min-height:{{services.height(zajecie.start, zajecie.koniec)}}%;" class="taken">
           </div>
@@ -110,6 +101,7 @@
   </div>
         </div>
       </div>
+      {{plan}}
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular/angular-route.js"></script>
     <script src="lib/angular/angular-resource.js"></script>

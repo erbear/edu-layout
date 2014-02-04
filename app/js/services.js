@@ -52,21 +52,13 @@ angular.module('ZapisyServices', []).
     	}else return 'type6';
     }
     //spradza czy w terminach jest termin ktory jest dodany do planu
-    this.isDone = function(terminy){
-    	var isCompleted = false;
-    	terminy.forEach(function(termin){
-    		if (termin.active == true){
-    			isCompleted = true;
-    		}
-    	});
-    	return isCompleted;
-    }
+    
     //szuka w planie obiektu o podanej nazwie, zwraca miejsce w tablicy gdzie 
     //jest znaleziony obiekt
-    this.findInPlan = function(plan, nazwa){
+    this.findInPlan = function(plan, _id){
     	var id = -1;
     	for (var i = 0; i<plan.length; i++){
-    		if (plan[i].nazwa === nazwa){
+    		if (plan[i].lecture_id === _id){
     			id = i;
     		}
     	}
@@ -115,5 +107,17 @@ angular.module('ZapisyServices', []).
             copy.push(lecture);
         });
         return copy;
+    }
+    this.addLecture = function(plan, lecture){
+        var id = this.findInPlan(plan, lecture.lecture_id);//miejsce danego terminu w planie
+        if (id != -1 ){//jezeli znalazlo termin w planie
+            if (plan[id].id == lecture.id){// jezeli termin_id zgadadza sie z szukanym terminem_id
+                plan.remove(this.findInPlan(plan, lecture.lecture_id));//usuwam
+                lecture.active = false;
+            }
+        } else {
+            plan.push(lecture);// w przeciwnym razie dodaje
+            lecture.active = true;
+        }
     }
   }]);

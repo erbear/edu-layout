@@ -39,12 +39,12 @@
     background-color: #46b8da; }
 
 .type6 {
-  background-color: lavenderblush;
+  background-color: lightgrey;
   color: #969696;
-  border: 1px solid #ffc7da; }
+  border: 1px solid #bfbfbf; }
   .type6:hover {
-    border: 1px solid #ff71a0;
-    background-color: #ffd7e4; }
+    border: 1px solid #939393;
+    background-color: #c6c6c6; }
 
 .type7 {
   background-color: crimson;
@@ -95,7 +95,7 @@
       position: absolute;
       width: 100%;
       padding: 2%;
-      text-align: left;
+      text-align: center;
       overflow: hidden;
       z-index: 3; }
       #ed-calendar .day .lecture p, #ed-calendar .day .lecture span {
@@ -109,7 +109,7 @@
           display: block; }
     #ed-calendar .day .taken {
       width: 100%;
-      border: 2px dashed #8a002e;
+      border: 2px dashed #202020;
       position: absolute;
       z-index: 99;
       pointer-events: none;

@@ -39,12 +39,12 @@
     background-color: #46b8da; }
 
 .type6 {
-  background-color: lavenderblush;
+  background-color: lightgrey;
   color: #969696;
-  border: 1px solid #ffc7da; }
+  border: 1px solid #bfbfbf; }
   .type6:hover {
-    border: 1px solid #ff71a0;
-    background-color: #ffd7e4; }
+    border: 1px solid #939393;
+    background-color: #c6c6c6; }
 
 .type7 {
   background-color: crimson;
@@ -102,7 +102,7 @@
       border-bottom: 1px solid #fff; }
       #ed-navbar ul li:hover {
         border-bottom: 1px solid #aaa;
-        background-color: lavenderblush; }
+        background-color: lightgrey; }
 
 #ed-content {
   width: 1000px;

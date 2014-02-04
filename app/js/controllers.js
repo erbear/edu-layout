@@ -15,6 +15,7 @@ angular.module('ZapisyControllers', [])
   	$scope.changeSubject = function(data){
       $scope.nauczyciele = data.teachers
       $scope.przedmioty = data.teachers[0];
+      $scope.typ = data.kind_id;
   	}
     $scope.changeTeacher = function(nauczyciel){
       $scope.przedmioty = nauczyciel;
@@ -25,20 +26,21 @@ angular.module('ZapisyControllers', [])
       this.length = from < 0 ? this.length + from : from;
       return this.push.apply(this, rest);
     };
-  	$scope.addLecture = function(isOnCal, lecture){
-      if (isOnCal == -1){  
-        $scope.plan.push(lecture);
-        lecture.active = true;
-      } else {
-        $scope.plan.remove(CalendarService.findInPlan($scope.plan,lecture.nazwa));
-        lecture.active = false;
-      }
-      console.log($scope.plan);
-  	}
+  	
     
     $scope.deleteFromPlan = function(termin){
       $scope.plan.remove(CalendarService.findInPlan($scope.plan,termin.nazwa));
       termin.active = false;
-      console.log($scope.plan);
+    }
+    $scope.isDone = function(plan, przedmiot_id){
+      var isCompleted = false;
+      $scope.plan.every(function(termin){
+        if (termin.lecture_id == przedmiot_id){
+          isCompleted = true;
+          return false;
+        }
+        return true;
+      });
+      return isCompleted; 
     }
   }]);
