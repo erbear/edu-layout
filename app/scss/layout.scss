@@ -43,6 +43,7 @@
     margin-bottom: 30px;
     text-align:center;
 	ul{
+    	min-height: 45px;
 		@include list;
 		li{
 		    display:inline-block;

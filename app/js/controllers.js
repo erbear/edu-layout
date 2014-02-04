@@ -7,18 +7,25 @@ angular.module('ZapisyControllers', [])
   	$http.get('data/edu.json').success(function(data){
       var newData = CalendarService.customizeJSON(data);
       $scope.dane = newData;
-      $scope.nauczyciele = newData[5].teachers
-  		$scope.przedmioty = newData[0].teachers[0];
+      $scope.nauczyciele = [{nazwa: "Twoj Plan"}]
+      $scope.plan = {1: new Array(), 2: new Array(), 3: new Array(), 4: new Array(), 5: new Array() };
+      $scope.przedmioty = $scope.plan;
+      $scope.isPlan = true;
   	});
-  	$scope.plan = {1: new Array("cos"), 2: new Array(), 3: new Array(), 4: new Array(), 5: new Array() };
   	$scope.services = CalendarService;
+    $scope.isPlan = true;
   	$scope.changeSubject = function(data){
       $scope.nauczyciele = data.teachers
       $scope.przedmioty = data.teachers[0];
-      $scope.typ = data.kind_id;
+      $scope.isPlan = false;
   	}
     $scope.changeTeacher = function(nauczyciel){
       $scope.przedmioty = nauczyciel;
+    }
+    $scope.changeToPlan = function(nauczyciel){
+      $scope.przedmioty = $scope.plan;
+      $scope.nauczyciele = [{nazwa: "Twoj Plan"}];
+      $scope.isPlan = true;
     }
     //usuwa z tablicy obiekt na podanej pozycji
     Array.prototype.remove = function(from, to) {

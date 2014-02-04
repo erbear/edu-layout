@@ -24,8 +24,8 @@
       
       <div id="ed-sidebar">
           <ul>
-              <li>Plan</li>
-              <li ng-repeat="dana in dane" ng-click="changeSubject(dana)" ng-class="[services.type(dana.kind.id), isDone(plan, dana) ? 'type6' : '']">{{dana.name}} {{isDone(plan,dana.id)}}</li>
+              <li ng-click="changeToPlan()">Plan</li>
+              <li ng-repeat="dana in dane" ng-click="changeSubject(dana)" ng-class="[services.type(dana.kind.id), isDone(plan, dana) ? 'type6' : '']">{{dana.name}}</li>
           </ul>    
       </div>
       <div id="ed-center">
@@ -50,58 +50,45 @@
           <div class="header">
               Poniedziałek
           </div>
-          <div ed-przedmioty przedmioty="przedmioty.pn" plan="plan" typ="typ">
-          </div>
-          <div ng-repeat="zajecie in plan | filter:services.pn" style="
-              top:{{services.top(zajecie.hour.start)}}%;
-              height:{{services.height(zajecie.hour.start, zajecie.hour.finish)}}%;
-              min-height:{{services.height(zajecie.hour.start, zajecie.hour.finish)}}%;"  class="taken">
+          <div ed-przedmioty przedmioty="przedmioty.3" plan="plan" is-plan="isPlan"></div>
+          <div ed-mockup plan="plan.3" is-plan="isPlan">
           </div>
       </div>
       <div class="day">
           <div class="header">
               Wtorek
           </div>
-          <div ed-przedmioty przedmioty="przedmioty.wt" plan="plan" typ="typ">
-          </div>
-          <div ng-repeat="zajecie in plan | filter:services.wt" style="top:{{services.top(zajecie.start)}}%;height:{{services.height(zajecie.start, zajecie.koniec)}}%;min-height:{{services.height(zajecie.start, zajecie.koniec)}}%;" class="taken">
+          <div ed-przedmioty przedmioty="przedmioty.5" plan="plan" is-plan="isPlan"></div>
+          <div ed-mockup plan="plan.5" is-plan="isPlan">
           </div>
       </div>
       <div class="day">
           <div class="header">
               Środa
           </div>
-          <div ed-przedmioty przedmioty="przedmioty.sr" plan="plan" typ="typ">
-          </div>
-          <div ng-repeat="zajecie in plan | filter:services.sr" style="top:{{services.top(zajecie.start)}}%;height:{{services.height(zajecie.start, zajecie.koniec)}}%;min-height:{{services.height(zajecie.start, zajecie.koniec)}}%;" class="taken">
+          <div ed-przedmioty przedmioty="przedmioty.4" plan="plan" is-plan="isPlan"></div>
+          <div ed-mockup plan="plan.4" is-plan="isPlan">
           </div>
       </div>
       <div class="day">
           <div class="header">
               Czwartek
           </div>
-          <div ed-przedmioty przedmioty="przedmioty.cz" plan="plan" typ="typ">
-          </div>
-          <div ng-repeat="zajecie in plan | filter:services.czw" style="top:{{services.top(zajecie.start)}}%;height:{{services.height(zajecie.start, zajecie.koniec)}}%;min-height:{{services.height(zajecie.start, zajecie.koniec)}}%;" class="taken">
+          <div ed-przedmioty przedmioty="przedmioty.1" plan="plan" is-plan="isPlan"></div>
+          <div ed-mockup plan="plan.1" is-plan="isPlan">
           </div>
       </div>
       <div class="day">
           <div class="header">
               Piątek
           </div>
-          <div ng-repeat="przedmiot in przedmioty.pt" style="top:{{services.top(przedmiot.hour.start)}}%;height:{{services.height(przedmiot.hour.start, przedmiot.hour.finish)}}%;min-height:{{services.height(przedmiot.hour.start, przedmiot.hour.finish)}}%;" ng-click="addLecture(services.findInPlan(plan, termin.nazwa),termin)"class="lecture ng-class:services.isChosen(termin.active, przedmiot.typ)">
-              {{przedmiot.teacher.name}}
-              <p>{{termin.start}} - {{termin.koniec}}</p>
-              <span>Miejsce</span>
-          </div>
-          <div ng-repeat="zajecie in plan | filter:services.pt" style="top:{{services.top(zajecie.start)}}%;height:{{services.height(zajecie.start, zajecie.koniec)}}%;min-height:{{services.height(zajecie.start, zajecie.koniec)}}%;" class="taken">
+          <div ed-przedmioty przedmioty="przedmioty.2" plan="plan" is-plan="isPlan"></div>
+          <div ed-mockup plan="plan.2" is-plan="isPlan">
           </div>
       </div>
-      
   </div>
         </div>
       </div>
-      {{plan}}
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular/angular-route.js"></script>
     <script src="lib/angular/angular-resource.js"></script>

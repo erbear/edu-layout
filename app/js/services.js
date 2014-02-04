@@ -25,25 +25,14 @@ angular.module('ZapisyServices', []).
     }
     //typ cegielki z zajeciami (wyklad, labolatoria itd.)
     this.type = function(rodzaj){
-        if(rodzaj == "1"){
-            return 'type1';
-        }else{
-            if(rodzaj == "2"){
-                return 'type2';
-            } else {
-                if (rodzaj == "3"){
-                    return 'type3';
-                }else {
-                    if (rodzaj == "4"){
-                        return 'type4';
-                    }else {
-                        if (rodzaj == "5"){
-                            return 'type5';
-                        }
-                    }
-                }
-            }
+        var type = {
+            1: 'type1',
+            2: 'type2',
+            3: 'type3',
+            4: 'type4',
+            5: 'type5',
         }
+        return type[rodzaj];
     }
     //sprawdza czy dany termin zostal dodany to planu i zwraca klase
     this.isChosen = function(active, rodzaj){
@@ -76,34 +65,20 @@ angular.module('ZapisyServices', []).
             lecture.terms.forEach(function(term){//po terminach
                 if (tmp.indexOf(term.teacher_id) == -1){//sprawdza czy ten prowadzacy byl juz w tej petli 
                     tmp.push(term.teacher_id);
-                    lecture.teachers[tmp.indexOf(term.teacher_id)] = {};//jak nie to tworzy nowy obiekt z dniami tygodnia
-                    lecture.teachers[tmp.indexOf(term.teacher_id)].nazwa = term.teacher.name;
-                    lecture.teachers[tmp.indexOf(term.teacher_id)].cz = new Array();
-                    lecture.teachers[tmp.indexOf(term.teacher_id)].pt = new Array();
-                    lecture.teachers[tmp.indexOf(term.teacher_id)].pn = new Array();
-                    lecture.teachers[tmp.indexOf(term.teacher_id)].sr = new Array();
-                    lecture.teachers[tmp.indexOf(term.teacher_id)].wt = new Array();
+                    //jak nie to tworzy nowy obiekt z dniami tygodnia
+                    lecture.teachers[tmp.indexOf(term.teacher_id)] = {
+                    nazwa: term.teacher.name,
+                    1: [], 
+                    2: [], 
+                    3: [], 
+                    4: [], 
+                    5: []
+                    };
                 }
+                term.kind_id = lecture.kind_id;
+                term.name = lecture.name;
                 //kazde zajecie wkladam w odpowiedni dzien
-                if(term.day_id == 1){
-                    lecture.teachers[tmp.indexOf(term.teacher_id)].cz.push(term);
-                } else {
-                    if (term.day_id == 2) {
-                        lecture.teachers[tmp.indexOf(term.teacher_id)].pt.push(term);
-                    } else {
-                        if (term.day_id == 3) {
-                            lecture.teachers[tmp.indexOf(term.teacher_id)].pn.push(term);
-                        } else {
-                            if (term.day_id == 4) {
-                                lecture.teachers[tmp.indexOf(term.teacher_id)].sr.push(term);
-                            } else {
-                                if (term.day_id == 5) {
-                                    lecture.teachers[tmp.indexOf(term.teacher_id)].wt.push(term);
-                                } 
-                            }
-                        }
-                    }
-                }
+                lecture.teachers[tmp.indexOf(term.teacher_id)][term.day_id].push(term);
             }); 
             //usuwam nie potrzebny obiekt
             delete lecture.terms;
@@ -126,5 +101,12 @@ angular.module('ZapisyServices', []).
             plan[lecture.day_id].push(lecture);//dodaje termin do planu na wyznaczone miejsce
             lecture.active = true;//mowi terminowi ze znajduje sie w planie
         }
+    }
+    this.isPlanEmpty = function(plan){
+        var isEmpty = true;
+        if (plan.length>0) {
+            isEmpty = false;
+        }
+        return isEmpty;
     }
   }]);
