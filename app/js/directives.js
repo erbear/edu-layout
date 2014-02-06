@@ -24,6 +24,15 @@ angular.module('ZapisyDirectives', [])
             scope.inTermin = {display: 'block'};
           }
         });
+        scope.isFull = function(przedmiot){
+          if (przedmiot.space.taken >= przedmiot.space.all){
+            return true;
+            console.log(full);
+          } else {
+            return false;
+          }
+        }
+        
       },
       templateUrl: 'partials/ed-przedmioty.html'
     };

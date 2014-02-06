@@ -54,6 +54,14 @@
     border: 1px solid #67091c;
     background-color: #c51236; }
 
+.type8 {
+  background-color: #f37c94;
+  color: white;
+  border: 1px solid #f05776; }
+  .type8:hover {
+    border: 1px solid crimson;
+    background-color: #f16581; }
+
 .active {
   visibility: visible !important; }
 
@@ -97,7 +105,8 @@
       padding: 2%;
       text-align: center;
       overflow: hidden;
-      z-index: 3; }
+      z-index: 3;
+      cursor: pointer; }
       #ed-calendar .day .lecture p, #ed-calendar .day .lecture span {
         font-size: 12px;
         padding: 2%;

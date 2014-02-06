@@ -1,0 +1,40 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: calibri; }
+  * body {
+    background-image: url("../data/shattered-island.gif");
+    overflow: hidden; }
+    * body > div {
+      width: 50%;
+      height: 100%;
+      float: left;
+      text-align: center; }
+      * body > div #image {
+        display: inline-block; }
+      * body > div#content {
+        overflow: hidden;
+        width: 50%;
+        text-align: left;
+        font-size: 8vh;
+        display: inline; }
+        * body > div#content > div {
+          top: 50%;
+          position: relative;
+          color: #fff;
+          font-size: inherit;
+          font-weight: bold; }
+          * body > div#content > div h1 {
+            font-size: inherit;
+            padding-top: 20px; }
+          * body > div#content > div p {
+            font-size: 4vh; }
+          * body > div#content > div a {
+            color: #F0E68C;
+            text-decoration: none;
+            font-size: 6vh; }
+            * body > div#content > div a:hover {
+              color: #FFD700; }
+          * body > div#content > div .fb-like {
+            top: 30px;
+            position: relative; }

@@ -42,6 +42,10 @@ $ciemny_czerwony: #DC143C;
     @include color($ciemny_czerwony);
 }
 
+.type8{
+    @include color(lighten($ciemny_czerwony, 25%));
+}
+
 .active{
     visibility: visible!important;
 }

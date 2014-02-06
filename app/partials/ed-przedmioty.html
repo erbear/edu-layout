@@ -4,8 +4,8 @@ height:{{services.height(przedmiot.hour.start, przedmiot.hour.finish)}}%;
 min-height:{{services.height(przedmiot.hour.start, przedmiot.hour.finish)}}%;" 
 ng-click="
 services.addLecture(plan,przedmiot)" ng-class="[
-'lecture', services.isChosen(przedmiot.active, przedmiot.kind_id), przedmiot.week]">
-	<div ng-style="inTermin">{{przedmiot.teacher.name}}
+'lecture', services.isChosen(przedmiot.active, przedmiot.kind_id), przedmiot.week, isFull(przedmiot) ? 'type8' : '']">
+	<div ng-style="inTermin">{{full}}{{przedmiot.teacher.name}}
 	<p>{{przedmiot.hour.start}} - {{przedmiot.hour.finish}}</p>
 	<span>{{przedmiot.space.taken}} / {{przedmiot.space.all}}</span></div>
 	
