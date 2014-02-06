@@ -66,6 +66,7 @@
   visibility: visible !important; }
 
 #ed-calendar {
+  padding: 20px 0;
   width: 1000px;
   height: 400px;
   font-family: calibri; }

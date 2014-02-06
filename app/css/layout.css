@@ -87,6 +87,11 @@
       float: left;
       cursor: pointer;
       z-index: 99; }
+      #ed-sidebar ul li a {
+        text-decoration: none;
+        font-size: inherit;
+        font-family: inherit;
+        color: inherit; }
       #ed-sidebar ul li:first-child {
         background-color: #f95521;
         color: #fff; }
@@ -97,7 +102,7 @@
   width: 1000px;
   margin: 0 auto;
   margin-bottom: 30px;
-  text-align: center; }
+  text-align: left; }
   #ed-navbar ul {
     min-height: 45px;
     list-style: none;
@@ -110,7 +115,8 @@
       cursor: pointer;
       border-bottom: 1px solid #fff; }
       #ed-navbar ul li:hover {
-        border-bottom: 1px solid #aaa;
+        border-bottom: 1px solid #aaa; }
+      #ed-navbar ul li.active {
         background-color: lightgrey; }
 
 #ed-content {
@@ -121,3 +127,10 @@
   margin: auto;
   margin-left: 210px;
   text-align: center; }
+  #ed-center #ed-page-title {
+    width: 1000px;
+    font-size: 30px;
+    text-align: left;
+    margin: auto;
+    padding: 20px 0;
+    border-bottom: 1px solid lightgrey; }

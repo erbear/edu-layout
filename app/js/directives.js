@@ -4,7 +4,7 @@
 
 
 angular.module('ZapisyDirectives', [])
-  .directive('edPrzedmioty', [ 'CalendarService', function(services) {
+  .directive('edTerminy', [ 'CalendarService', function(services) {
     return {
     	restrict: 'EA',
       scope: {
@@ -15,15 +15,6 @@ angular.module('ZapisyDirectives', [])
       replace:true,
       link: function(scope, ele, attrs){
         scope.services = services;
-        scope.$watch('isPlan', function(val){
-          if (val){
-            scope.inPlan = {display: 'block'};
-            scope.inTermin = {display: 'none'};
-          } else {
-            scope.inPlan = {display: 'none'};
-            scope.inTermin = {display: 'block'};
-          }
-        });
         scope.isFull = function(przedmiot){
           if (przedmiot.space.taken >= przedmiot.space.all){
             return true;
@@ -33,6 +24,21 @@ angular.module('ZapisyDirectives', [])
           }
         }
         
+      },
+      templateUrl: 'partials/ed-terminy.html'
+    };
+  }])
+  .directive('edPrzedmioty', [ 'CalendarService', function(services) {
+    return {
+      restrict: 'EA',
+      scope: {
+        przedmioty: '=',
+        plan: '=',
+        isPlan: '='
+      },
+      replace:true,
+      link: function(scope, ele, attrs){
+        scope.services = services;
       },
       templateUrl: 'partials/ed-przedmioty.html'
     };
@@ -47,14 +53,6 @@ angular.module('ZapisyDirectives', [])
       replace:true,
       link: function(scope, ele, attrs){
         scope.services = services;
-        scope.$watch('isPlan', function(val){
-          if (val){
-            scope.inTermin = {display: 'none'};
-          } else {
-            scope.inTermin = {display: 'block'};
-          }
-        });
-        
       },
       templateUrl: 'partials/ed-mockup.html'
     };

@@ -41,4 +41,23 @@ angular.module('ZapisyControllers', [])
       }
       return false; 
     }
+  }])
+  .controller('KursController', ['$scope', 'CalendarService', '$stateParams','$state', function($scope, CalendarService, $stateParams, $state){
+    $scope.nauczyciele = $scope.dane[$stateParams.kursid].teachers;
+    $scope.przedmiot = $scope.dane[$stateParams.kursid].name;
+
+    $scope.$on('$stateChangeSuccess', 
+      function(event, toState, toParams, fromState, fromParams){ 
+          console.log(toParams);
+          if (toState.url == "/kurs/{kursid:[0-9]}"){
+            $state.go('.prowadzacy', {prowadzacyid: 0});
+          }
+    })
+  }])
+  .controller('ProwadzacyController', ['$scope', 'CalendarService', '$stateParams', function($scope, CalendarService, $stateParams){
+    if ($stateParams.prowadzacyid!= null){
+      $scope.przedmioty = $scope.nauczyciele[$stateParams.prowadzacyid];
+    }else {
+      $scope.przedmioty = $scope.nauczyciele[0];
+    }
   }]);

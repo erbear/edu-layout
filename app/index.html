@@ -24,73 +24,13 @@
       
       <div id="ed-sidebar">
           <ul>
-              <li ng-click="changeToPlan()">Plan</li>
-              <li ng-repeat="dana in dane" ng-click="changeSubject(dana)" ng-class="[services.type(dana.kind.id), isDone(plan, dana) ? 'type6' : '']">{{dana.name}}</li>
+              <li ui-sref="plan">Plan</li>
+              <li ng-repeat="dana in dane" ui-sref="kurs({kursid: $index})" ng-class="[services.type(dana.kind.id), isDone(plan, dana) ? 'type6' : '']">{{dana.name}}</li>
           </ul>    
       </div>
-      <div id="ed-center">
-        <div id="ed-navbar">
-          <ul>
-              <li ng-repeat="nauczyciel in nauczyciele" ng-click="changeTeacher(nauczyciel)">{{nauczyciel.nazwa}}</li>
-          </ul>
-        </div>
-        <div id="ed-content">
-            <div id="ed-calendar">
-     
-      <div class="hours">
-          <p class="lecture1">7:30</p>
-          <p class="lecture2">9:15</p>
-          <p class="lecture3">11:15</p>
-          <p class="lecture4">13:15</p>
-          <p class="lecture5">15:15</p>
-          <p class="lecture6">17:05</p>
-          <p class="lecture7">18:55</p>
-      </div>
-      <div class="day">
-          <div class="header">
-              Poniedziałek
-          </div>
-          <div ed-przedmioty przedmioty="przedmioty.3" plan="plan" is-plan="isPlan"></div>
-          <div ed-mockup plan="plan.3" is-plan="isPlan">
-          </div>
-      </div>
-      <div class="day">
-          <div class="header">
-              Wtorek
-          </div>
-          <div ed-przedmioty przedmioty="przedmioty.5" plan="plan" is-plan="isPlan"></div>
-          <div ed-mockup plan="plan.5" is-plan="isPlan">
-          </div>
-      </div>
-      <div class="day">
-          <div class="header">
-              Środa
-          </div>
-          <div ed-przedmioty przedmioty="przedmioty.4" plan="plan" is-plan="isPlan"></div>
-          <div ed-mockup plan="plan.4" is-plan="isPlan">
-          </div>
-      </div>
-      <div class="day">
-          <div class="header">
-              Czwartek
-          </div>
-          <div ed-przedmioty przedmioty="przedmioty.1" plan="plan" is-plan="isPlan"></div>
-          <div ed-mockup plan="plan.1" is-plan="isPlan">
-          </div>
-      </div>
-      <div class="day">
-          <div class="header">
-              Piątek
-          </div>
-          <div ed-przedmioty przedmioty="przedmioty.2" plan="plan" is-plan="isPlan"></div>
-          <div ed-mockup plan="plan.2" is-plan="isPlan">
-          </div>
-      </div>
-  </div>
-        </div>
-      </div>
+      <div ui-view></div>
     <script src="lib/angular/angular.js"></script>
-    <script src="lib/angular/angular-route.js"></script>
+    <script src="lib/angular-ui/angular-ui-router.js"></script>
     <script src="lib/angular/angular-resource.js"></script>
     <script src="js/app.js"></script>
     <script src="js/services.js"></script>

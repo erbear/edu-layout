@@ -3,12 +3,31 @@
 
 // Declare app level module which depends on filters, and services
 angular.module('ZapisyApp', [
-  'ngRoute',
-  'ZapisyControllers',
-  'ZapisyDirectives',
-  'ZapisyServices'
-]).
-config(['$routeProvider', function($routeProvider) {
-  //$routeProvider.when('/view1', {templateUrl: 'partials/partial1.html', controller: 'MyCtrl1'});
-  $routeProvider.otherwise({redirectTo: '/'});
+	'ui.router',
+	'ZapisyControllers',
+	'ZapisyDirectives',
+	'ZapisyServices'
+])
+.run(['$rootScope','$state', function($rootScope, $state){
+	$rootScope.$state = $state;
+}])
+.config(['$stateProvider','$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+  $urlRouterProvider.otherwise("/");
+
+	$stateProvider
+		.state('plan', {
+			url: "/",
+			templateUrl: "partials/ed-plan.html"
+		})
+		.state('kurs', {
+			url: "/kurs/{kursid:[0-9]}",
+			templateUrl: "partials/ed-prowadzacy.html",
+			controller: "KursController"
+		})
+		.state('kurs.prowadzacy', {
+			url: "/prowadzacy/{prowadzacyid}",
+			templateUrl: "partials/ed-kalendarz.html",
+			controller: "ProwadzacyController"
+		})
+
 }]);

@@ -27,6 +27,12 @@
 		    float:left;
 		    cursor:pointer;
 		    z-index: 99;
+		    a {
+		    	text-decoration: none;
+		    	font-size:inherit;
+		    	font-family: inherit;
+		    	color:inherit;
+		    }
 		    &:first-child{
 			    background-color: #f95521;
 			    color: #fff;
@@ -41,7 +47,7 @@
     width: 1000px;
     margin: 0 auto;
     margin-bottom: 30px;
-    text-align:center;
+    text-align:left;
 	ul{
     	min-height: 45px;
 		@include list;
@@ -53,6 +59,8 @@
 			border-bottom:1px solid #fff;
 		    &:hover{
 			    border-bottom:1px solid #aaa;
+		    }
+		    &.active{
 			    background-color: $szary;
 		    }
 		}
@@ -66,4 +74,12 @@
     margin: auto;
     margin-left: 210px;
     text-align: center;
+    #ed-page-title{
+    	width: 1000px;
+    	font-size: 30px;
+    	text-align: left;
+   	 	margin:  auto;
+   	 	padding: 20px 0;
+   	 	border-bottom: 1px solid $szary;
+    }
 }

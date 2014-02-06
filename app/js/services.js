@@ -109,4 +109,12 @@ angular.module('ZapisyServices', []).
         }
         return isEmpty;
     }
+    this.indexOfObject = function(object) {    
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i].id == o.id) {
+                return i;
+            }
+        }
+        return -1;
+    }
   }]);
